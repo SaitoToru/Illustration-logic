@@ -1,0 +1,1 @@
+- Fix: Card duplicated in Stack instead of moving
