@@ -21,9 +21,9 @@ platform :ios do
       #clean: false,
       skip_profile_detection: true,
       codesigning_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})",
-      export_method: "ad-hoc",
+      export_method: "development",
       export_options: {
-        method: "ad-hoc",
+        method: "development",
         provisioningProfiles: {
           ENV["IOS_APP_ID"] => "match AppStore #{ENV['IOS_APP_ID']}"
         }

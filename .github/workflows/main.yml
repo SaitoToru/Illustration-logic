@@ -78,12 +78,12 @@ jobs:
           targetPlatform: ${{ matrix.targetPlatform }}
           buildMethod: Cgs.Editor.BuildCgs.BuildOptions
           androidAppBundle: false
-  #     - name: Upload Build
-  #       uses: actions/upload-artifact@v2
-  #       if: always()
-  #       with:
-  #         name: cgs-${{ matrix.targetPlatform }}
-  #         path: build/${{ matrix.targetPlatform }}
+      - name: Upload Build
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cgs-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
   # deploy:
   #   needs: [buildWithLinux]
   #   strategy:
