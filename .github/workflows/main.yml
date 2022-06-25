@@ -93,7 +93,6 @@ jobs:
     needs: [buildWithLinux]
     runs-on: ubuntu-latest
     name: deploy android app
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
