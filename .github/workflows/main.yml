@@ -91,7 +91,11 @@ jobs:
           path: build/${{ matrix.targetPlatform }}
   deploy:
     needs: [buildWithLinux]
-
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          - Android
     env: 
       _OUTPUT_PATH: ${{ format('{0}/Build.ipa', github.workspace) }}
     runs-on: ubuntu-latest
@@ -115,6 +119,11 @@ jobs:
           groups: test-team
           file: cgs-${{ matrix.targetPlatform }}
           debug: true
+      - name: Cleanup
+        if: always()
+        uses: geekyeggo/delete-artifact@v1
+        with:
+          name: cgs-${{ matrix.targetPlatform }}
  # Firebase にデプロイ
 
   # buildIOS:
