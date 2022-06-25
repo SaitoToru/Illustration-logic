@@ -130,9 +130,8 @@ jobs:
       APPLE_TEAM_NAME: ${{ secrets.APPLE_TEAM_NAME }}
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
       MATCH_PERSONAL_ACCESS_TOKEN: ${{ secrets.MATCH_PERSONAL_ACCESS_TOKEN }}
-      IOS_APP_ID: com.sample.app # bundle idを指定します
+      IOS_APP_ID: ${{ secrets.IOS_APP_ID }} # bundle idを指定します
       IOS_BUILD_PATH: ${{ format('{0}/build/iOS', github.workspace) }}
-      PROJECT_NAME: sampleapp
       MATCH_REPOSITORY_ACCOUNT: ${{ secrets.MATCH_REPOSITORY_ACCOUNT }}
       USYM_UPLOAD_AUTH_TOKEN: 'fake' # ビルドが途中でこけるのでfake用に環境変数を追加。
     steps:

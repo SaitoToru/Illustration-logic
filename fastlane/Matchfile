@@ -1,11 +1,11 @@
 git_url("https://github.com/SaitoToru/certificates.git")
-
+git_basic_authorization(Base64.strict_encode64("#{ENV['MATCH_REPOSITORY_ACCOUNT']}:#{ENV['MATCH_PERSONAL_ACCESS_TOKEN']}"))
 storage_mode("git")
 
 type("development") # The default type, can be: appstore, adhoc, enterprise or development
 
-# app_identifier(["com.saito.firebase"])
-# username("lisa.saito135@icloud.com") # Your Apple Developer Portal username
+app_identifier(["com.saito.firebase"])
+username("lisa.saito135@icloud.com") # Your Apple Developer Portal username
 
 # For all available options run `fastlane match --help`
 # Remove the # in the beginning of the line to enable the other options
