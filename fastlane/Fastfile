@@ -25,7 +25,7 @@ platform :ios do
       export_options: {
         method: "development",
         provisioningProfiles: {
-          ENV["IOS_APP_ID"] => "match AppStore #{ENV['IOS_APP_ID']}"
+          ENV["IOS_APP_ID"] => "match Development #{ENV['IOS_APP_ID']}"
         }
       }
     )
@@ -43,7 +43,7 @@ platform :ios do
       unlock: true
     )
     match(
-      type: "appstore",
+      type: "development",
       readonly: true,
       keychain_name: keychain_name,
       keychain_password: keychain_password
