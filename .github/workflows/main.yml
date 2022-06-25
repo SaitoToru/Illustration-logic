@@ -118,13 +118,13 @@ jobs:
           appId: ${{secrets.FIREBASE_ANDROID_APP_ID}}
           token: ${{secrets.FIREBASE_TOKEN}}
           groups: test-team
-          file: ${{steps.download.outputs.download-path}}/Android.aab
+          file: ${{steps.download.outputs.download-path}}/Android.apk
           debug: true
-      - name: Cleanup
-        if: always()
-        uses: geekyeggo/delete-artifact@v1
-        with:
-          name: cgs-${{ matrix.targetPlatform }}
+      # - name: Cleanup
+      #   if: always()
+      #   uses: geekyeggo/delete-artifact@v1
+      #   with:
+      #     name: cgs-${{ matrix.targetPlatform }}
  # Firebase にデプロイ
 
   # buildIOS:
