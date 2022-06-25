@@ -25,7 +25,7 @@ platform :ios do
       export_options: {
         method: "development",
         provisioningProfiles: {
-          ENV["IOS_APP_ID"] => "match Development #{ENV['IOS_APP_ID']}"
+          ENV["IOS_APP_ID"] => "match development #{ENV['IOS_APP_ID']}"
         }
       }
     )
