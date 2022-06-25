@@ -108,6 +108,7 @@ jobs:
           java-version: 1.8
       - name: Download Artifact
         uses: actions/download-artifact@v2
+        id: download
         with:
           name: cgs-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
@@ -117,7 +118,7 @@ jobs:
           appId: ${{secrets.FIREBASE_ANDROID_APP_ID}}
           token: ${{secrets.FIREBASE_TOKEN}}
           groups: test-team
-          file: cgs-${{ matrix.targetPlatform }}
+          file: ${{steps.download.outputs.download-path}}/Android.aab
           debug: true
       - name: Cleanup
         if: always()
