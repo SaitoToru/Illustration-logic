@@ -77,7 +77,7 @@ jobs:
           customParameters: -buildNumber ${{ github.run_number }}
           targetPlatform: ${{ matrix.targetPlatform }}
           buildMethod: Cgs.Editor.BuildCgs.BuildOptions
-          androidAppBundle: true
+          androidAppBundle: false
           # androidKeystoreName: keystore.keystore
           # androidKeystoreBase64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           # androidKeystorePass: ${{ secrets.ANDROID_KEYSTORE_PASS }}
@@ -96,8 +96,6 @@ jobs:
       matrix:
         targetPlatform:
           - Android
-    env: 
-      _OUTPUT_PATH: ${{ format('{0}/Build.ipa', github.workspace) }}
     runs-on: ubuntu-latest
     name: deploy android app
     steps:
