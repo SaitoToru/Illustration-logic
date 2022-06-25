@@ -115,7 +115,7 @@ jobs:
         with:
           appId: ${{secrets.FIREBASE_ANDROID_APP_ID}}
           token: ${{secrets.FIREBASE_TOKEN}}
-          groups: test-team
+          groups: tester
           file: ${{steps.download.outputs.download-path}}/Android.apk
           debug: true
       # - name: Cleanup
