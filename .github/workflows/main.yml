@@ -48,7 +48,7 @@ jobs:
       matrix:
         targetPlatform:
           - Android
-          - iOS
+          # - iOS
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -89,13 +89,13 @@ jobs:
         with:
           name: cgs-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
-      - name: Firebase App Distribution
-        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
-        with:
-          appId: ${{secrets.FIREBASE_ANDROID_APP_ID}}
-          token: ${{secrets.FIREBASE_TOKEN}}
-          groups: developer
-          file: build/${{ matrix.targetPlatform }}/app-debug.apk
+      # - name: Firebase App Distribution
+      #   uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
+      #   with:
+      #     appId: ${{secrets.FIREBASE_ANDROID_APP_ID}}
+      #     token: ${{secrets.FIREBASE_TOKEN}}
+      #     groups: developer
+      #     file: build/${{ matrix.targetPlatform }}/app-debug.apk
 
   # deploy:
     # name: deploy android app
@@ -120,19 +120,15 @@ jobs:
   #   runs-on: macos-latest
   #   timeout-minutes: 60
   #   needs: buildWithLinux
-  #   if: github.event.action == 'published'
+        # if: ${{ always() }} # Avoid skipping on failed tests
   #   env:
-  #     APPLE_CONNECT_EMAIL: ${{ secrets.APPLE_CONNECT_EMAIL }}
-  #     APPLE_DEVELOPER_EMAIL: ${{ secrets.APPLE_DEVELOPER_EMAIL }}
   #     APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
   #     APPLE_TEAM_NAME: ${{ secrets.APPLE_TEAM_NAME }}
-  #     APPLE_ITC_TEAM_ID: ${{ secrets.APPLE_ITC_TEAM_ID }}
   #     MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
   #     MATCH_PERSONAL_ACCESS_TOKEN: ${{ secrets.MATCH_PERSONAL_ACCESS_TOKEN }}
   #     IOS_APP_ID: com.sample.app # bundle idを指定します
   #     IOS_BUILD_PATH: ${{ format('{0}/build/iOS', github.workspace) }}
   #     PROJECT_NAME: sampleapp
-  #     RELEASE_NOTES: ${{ github.event.release.body }}
   #     MATCH_REPOSITORY_ACCOUNT: ${{ secrets.MATCH_REPOSITORY_ACCOUNT }}
   #     USYM_UPLOAD_AUTH_TOKEN: 'fake' # ビルドが途中でこけるのでfake用に環境変数を追加。
   #   steps:
@@ -181,42 +177,3 @@ jobs:
   #         path: |
   #           ${{ github.workspace }}/*.ipa
   #           ${{ github.workspace }}/*.dSYM.zip
-
-  # releaseToAppStore:
-  #   name: Release to the App Store
-  #   runs-on: macos-latest
-  #   timeout-minutes: 60
-  #   needs: buildIOS
-  #   if: github.event.action == 'published'
-  #   env:
-  #     APPLE_CONNECT_EMAIL: ${{ secrets.APPLE_CONNECT_EMAIL }}
-  #     APPLE_DEVELOPER_EMAIL: ${{ secrets.APPLE_DEVELOPER_EMAIL }}
-  #     APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
-  #     APPLE_TEAM_NAME: ${{ secrets.APPLE_TEAM_NAME }}
-  #     APPLE_ITC_TEAM_ID: ${{ secrets.APPLE_ITC_TEAM_ID }}
-  #     FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
-  #     FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
-  #     MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-  #     MATCH_PERSONAL_ACCESS_TOKEN: ${{ secrets.MATCH_PERSONAL_ACCESS_TOKEN }}
-  #     ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
-  #     ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
-  #     ASC_KEY_CONTENT: ${{ secrets.ASC_KEY_CONTENT }}
-  #     IOS_APP_ID: com.sample.app # bundle idを指定します
-  #     IOS_BUILD_PATH: ${{ format('{0}/build/iOS', github.workspace) }}
-  #     PROJECT_NAME: sampleapp
-  #     RELEASE_NOTES: ${{ github.event.release.body }}
-  #     MATCH_REPOSITORY_ACCOUNT: ${{ secrets.MATCH_REPOSITORY_ACCOUNT }}
-  #   steps:
-  #     - name: Checkout Repository
-  #       uses: actions/checkout@v2
-  #     - name: Download iOS Artifact
-  #       uses: actions/download-artifact@v2
-  #       with:
-  #         name: ipa
-  #         path: |
-  #           ${{ github.workspace }}/*.ipa
-  #           ${{ github.workspace }}/*.dSYM.zip
-  #     - name: Upload to the App Store
-  #       uses: maierj/fastlane-action@v1.4.0
-  #       with:
-  #         lane: 'ios release'
