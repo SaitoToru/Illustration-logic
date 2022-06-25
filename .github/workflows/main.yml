@@ -89,6 +89,15 @@ jobs:
         with:
           name: cgs-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
+  deploy:
+    name: deploy android app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
       - name: Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
         with:
@@ -96,23 +105,6 @@ jobs:
           token: ${{secrets.FIREBASE_TOKEN}}
           groups: developer
           file: build/${{ matrix.targetPlatform }}/app-debug.apk
-
-  # deploy:
-    # name: deploy android app
-    # runs-on: ubuntu-latest
-    # steps:
-    #   - uses: actions/checkout@v1
-    #   - name: Setup JDK
-    #     uses: actions/setup-java@v1
-    #     with:
-    #       java-version: 1.8
-    #   - name: Deploy Firebase App Distribution [DEV]
-    #     uses: wzieba/Firebase-Distribution-Github-Action@v1.1.1
-    #     with:
-    #       appId: ${{secrets.FIREBASE_ANDROID_APP_ID}}
-    #       token: ${{secrets.FIREBASE_TOKEN}}
-    #       groups: developer
-    #       file: build/${{ matrix.targetPlatform }}/app-debug.apk
  # Firebase にデプロイ
 
   # buildIOS:
