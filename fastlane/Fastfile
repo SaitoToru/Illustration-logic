@@ -23,7 +23,7 @@ platform :ios do
       skip_profile_detection: true,
       # codesigning_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})",
       codesigning_identity: "iPhone Distribution",
-      export_method: "ad-hoc",
+      export_method: "development",
       export_options: {
         method: "ad-hoc",
         provisioningProfiles: {
