@@ -13,21 +13,22 @@ platform :ios do
       target_filter: "Unity-iPhone",
       profile: "/Users/runner/Library/MobileDevice/Provisioning Profiles/900f128f-45ff-45d6-abcd-23ca066f9573.mobileprovision", # より動的にみるようにしています
       # code_signing_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})"
-      code_signing_identity: "iOS Develoer"
+      code_signing_identity: "iPhone Distribution"
     )
     gym(
+      configuration: "Debug",
       workspace: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcworkspace",
       scheme: "Unity-iPhone",
       clean: true,
       #clean: false,
       skip_profile_detection: true,
       # codesigning_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})",
-      codesigning_identity: "iPhone Distribution",
-      export_method: "ad-hoc",
+      codesigning_identity: "iOS Develoer",
+      export_method: "development",
       export_options: {
-        method: "ad-hoc",
+        method: "development",
         provisioningProfiles: {
-          ENV["IOS_APP_ID"] => "match AdHoc com.saito.firebase"
+          ENV["IOS_APP_ID"] => "match Development com.saito.firebase"
         }
       }
     )
@@ -45,7 +46,7 @@ platform :ios do
       unlock: true
     )
     match(
-      type: "adhoc",
+      type: "development",
       readonly: true,
       keychain_name: keychain_name,
       keychain_password: keychain_password

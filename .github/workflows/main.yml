@@ -36,7 +36,7 @@ jobs:
         if: ${{ always() }} # Avoid skipping on failed tests
         uses: davidmfinol/unity-test-publisher@main
         with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          githubToken: ${{ secrets.AUTH_GITHUB_TOKEN }}
 
   buildWithLinux:
     name: Build for ${{ matrix.targetPlatform }} by Unity
