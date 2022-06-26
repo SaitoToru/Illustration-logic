@@ -11,7 +11,7 @@ platform :ios do
     update_project_provisioning(
       xcodeproj: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
       target_filter: "Unity-iPhone",
-      profile: "./Development_com.saito.firebase.mobileprovision", # より動的にみるようにしています
+      profile: "/Users/runner/Library/MobileDevice/Provisioning Profiles/900f128f-45ff-45d6-abcd-23ca066f9573.mobileprovision", # より動的にみるようにしています
       code_signing_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})"
     )
     gym(
@@ -25,7 +25,7 @@ platform :ios do
       export_options: {
         method: "development",
         provisioningProfiles: {
-          ENV["IOS_APP_ID"] => "match development #{ENV['IOS_APP_ID']}"
+          ENV["IOS_APP_ID"] => "match Development #{ENV['IOS_APP_ID']}"
         }
       }
     )
