@@ -4,5 +4,7 @@ for_platform :ios do
   apple_id(ENV["APPLE_ID"]) # Your Apple email address
 
   team_id(ENV["APPLE_TEAM_ID"]) # Developer Portal Team ID
+  team_name(ENV["APPLE_TEAM_NAME"])
+
   itc_team_id(ENV["APPLE_ITC_TEAM_ID"]) # App Store Connect Team ID
 end
