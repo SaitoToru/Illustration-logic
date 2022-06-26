@@ -6,7 +6,8 @@ platform :ios do
   desc "Create .ipa"
   lane :build do
     cocoapods(podfile: "#{ENV['IOS_BUILD_PATH']}/iOS/Podfile")
-    disable_automatic_code_signing(path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj")
+    # disable_automatic_code_signing(path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj")
+    enable_automatic_code_signing(path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj")
     certificates
     update_project_provisioning(
       xcodeproj: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
@@ -30,13 +31,15 @@ platform :ios do
       workspace: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcworkspace",
       scheme: "Unity-iPhone",
       clean: true,
-      skip_profile_detection: true,
+      # skip_profile_detection: true,
+      silent: true,
+      skip_package_ipa: true,
       # codesigning_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})",
-      codesigning_identity: "iPhone Distribution",
+      # codesigning_identity: "iPhone Distribution",
       export_method: "development",
       export_options: {
         compileBitcode: false,
-        method: "development",
+        # method: "development",
         provisioningProfiles: {
           ENV["IOS_APP_ID"] => "match Development com.saito.firebase"
         }
