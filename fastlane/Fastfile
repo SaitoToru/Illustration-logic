@@ -7,7 +7,6 @@ platform :ios do
   lane :build do
     cocoapods(podfile: "#{ENV['IOS_BUILD_PATH']}/iOS/Podfile")
     # disable_automatic_code_signing(path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj")
-    sync_code_signing
     disable_automatic_code_signing(path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj")
     cert
     sigh(force: true)
