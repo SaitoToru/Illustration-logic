@@ -31,7 +31,7 @@ platform :ios do
       clean: true,
       skip_profile_detection: true,
       # codesigning_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})",
-      code_signing_identity: "Apple Development: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']}) ",
+      # code_signing_identity: "Apple Development: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']}) ",
       export_method: "development",
       export_options: {
         compileBitcode: false,
