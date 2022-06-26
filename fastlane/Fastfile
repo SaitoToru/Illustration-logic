@@ -35,7 +35,7 @@ platform :ios do
       export_method: "development",
       export_options: {
         compileBitcode: false,
-        method: "development",
+        # method: "development",
         provisioningProfiles: {
           ENV["IOS_APP_ID"] => "match Development com.saito.firebase"
         }
