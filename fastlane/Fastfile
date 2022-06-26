@@ -23,11 +23,11 @@ platform :ios do
       skip_profile_detection: true,
       # codesigning_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})",
       codesigning_identity: "iPhone Distribution",
-      export_method: "development",
+      export_method: "ad-hoc",
       export_options: {
         method: "ad-hoc",
         provisioningProfiles: {
-          ENV["IOS_APP_ID"] => "match Development com.saito.firebase"
+          ENV["IOS_APP_ID"] => "match AdHoc com.saito.firebase"
         }
       }
     )
@@ -45,7 +45,7 @@ platform :ios do
       unlock: true
     )
     match(
-      type: "development",
+      type: "adhoc",
       readonly: true,
       keychain_name: keychain_name,
       keychain_password: keychain_password
