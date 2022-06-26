@@ -7,8 +7,14 @@ platform :ios do
   lane :build do
     cocoapods(podfile: "#{ENV['IOS_BUILD_PATH']}/iOS/Podfile")
     # disable_automatic_code_signing(path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj")
-    enable_automatic_code_signing(path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj")
-    certificates
+    sync_code_signing
+    disable_automatic_code_signing(path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj")
+    cert
+    sigh(force: true)
+    get_certificates(
+      development: true,
+      username: "lisa.saito135@icloud.com"
+    )
     update_project_provisioning(
       xcodeproj: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
       target_filter: "Unity-iPhone",
@@ -37,6 +43,7 @@ platform :ios do
         }
       }
     )
+    enable_automatic_code_signing(path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj")
   end
 
   desc "Synchronize certificates"
