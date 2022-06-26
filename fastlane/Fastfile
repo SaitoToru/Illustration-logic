@@ -8,12 +8,11 @@ platform :ios do
     cocoapods(podfile: "#{ENV['IOS_BUILD_PATH']}/iOS/Podfile")
     # disable_automatic_code_signing(path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj")
     disable_automatic_code_signing(path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj")
-    cert
-    sigh(force: true)
-    get_certificates(
+    cert(
       development: true,
       username: "lisa.saito135@icloud.com"
     )
+    sigh(force: true)
     update_project_provisioning(
       xcodeproj: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
       target_filter: "Unity-iPhone",
