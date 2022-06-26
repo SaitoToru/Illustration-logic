@@ -13,7 +13,7 @@ platform :ios do
       target_filter: "Unity-iPhone",
       profile: "/Users/runner/Library/MobileDevice/Provisioning Profiles/900f128f-45ff-45d6-abcd-23ca066f9573.mobileprovision", # より動的にみるようにしています
       # code_signing_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})"
-      code_signing_identity: "iOS Developer"
+      code_signing_identity: "iOS Develoer"
     )
     gym(
       workspace: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcworkspace",
@@ -22,8 +22,8 @@ platform :ios do
       #clean: false,
       skip_profile_detection: true,
       # codesigning_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})",
-      codesigning_identity: "iOS Developer",
-      export_method: "development",
+      codesigning_identity: "iPhone Distribution",
+      export_method: "ad_hoc",
       export_options: {
         method: "ad_hoc",
         provisioningProfiles: {
