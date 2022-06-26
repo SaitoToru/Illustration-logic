@@ -13,7 +13,7 @@ platform :ios do
       target_filter: "Unity-iPhone",
       profile: "/Users/runner/Library/MobileDevice/Provisioning Profiles/900f128f-45ff-45d6-abcd-23ca066f9573.mobileprovision", # より動的にみるようにしています
       # code_signing_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})"
-      code_signing_identity: "iPhone Distribution"
+      code_signing_identity: "iOS Develoer"
     )
     # gym(
 	  #   configuration: "Debug",
@@ -26,14 +26,16 @@ platform :ios do
     #   codesigning_identity: "iOS Develoer",
 	  # )
     gym(
+	    configuration: "Debug",
       workspace: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcworkspace",
       scheme: "Unity-iPhone",
       clean: true,
       skip_profile_detection: true,
       # codesigning_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})",
-      codesigning_identity: "iOS Develoer",
+      codesigning_identity: "iPhone Distribution",
       export_method: "development",
       export_options: {
+        compileBitcode: false,
         method: "development",
         provisioningProfiles: {
           ENV["IOS_APP_ID"] => "match Development com.saito.firebase"
