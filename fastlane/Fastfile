@@ -22,12 +22,12 @@ platform :ios do
       skip_profile_detection: true,
       codesigning_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})",
       export_method: "development",
-      export_options: {
-        method: "development",
-        provisioningProfiles: {
-          ENV["IOS_APP_ID"] => "match Development #{ENV['IOS_APP_ID']}"
-        }
-      }
+      # export_options: {
+      #   method: "development",
+      #   provisioningProfiles: {
+      #     ENV["IOS_APP_ID"] => "match Development com.saito.firebase"
+      #   }
+      # }
     )
   end
 
