@@ -16,24 +16,16 @@ platform :ios do
       # code_signing_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})"
       code_signing_identity: "iOS Develoer"
     )
-    # gym(
-	  #   configuration: "Debug",
-    #   workspace: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcworkspace",
-    #   scheme: "Unity-iPhone",
-	  #   clean: true,
-	  #   output_directory: "./build",
-	  #   output_name: "FastlaneTest.ipa",
-	  #   export_method: "development",
-    #   codesigning_identity: "iOS Develoer",
-	  # )
+    update_project_team(
+      path: path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
+      teamid: "#{ENV["APPLE_TEAM_ID"]}"
+    )
     gym(
 	    configuration: "Debug",
       workspace: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcworkspace",
       scheme: "Unity-iPhone",
       clean: true,
-      # skip_profile_detection: true,
-      silent: true,
-      skip_package_ipa: true,
+      skip_profile_detection: true,
       # codesigning_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})",
       # codesigning_identity: "iPhone Distribution",
       export_method: "development",
