@@ -7,8 +7,6 @@ type("adhoc") # The default type, can be: appstore, adhoc, enterprise or develop
 app_identifier(["com.saito.firebase"])
 username("lisa.saito135@icloud.com") # Your Apple Developer Portal username
 
-team_id("J24VMMNS93")
-team_name("saito toru")
 # For all available options run `fastlane match --help`
 # Remove the # in the beginning of the line to enable the other options
 
