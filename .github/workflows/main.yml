@@ -84,7 +84,8 @@ jobs:
         with:
           name: cgs-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
-  deploy:
+
+  deployAndroid:
     needs: [buildWithLinux]
     strategy:
       fail-fast: false
@@ -180,7 +181,8 @@ jobs:
           path: |
             ${{ github.workspace }}/*.ipa
             ${{ github.workspace }}/*.dSYM.zip
-  deploy:
+
+  deployiOS:
     name: deploy ios app
     needs: [buildIOS]
     strategy:
