@@ -29,6 +29,7 @@ platform :ios do
       workspace: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcworkspace",
       scheme: "Unity-iPhone",
       clean: true,
+      include_bitcode: false,
       skip_profile_detection: true,
       # codesigning_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})",
       codesigning_identity: "Apple Development",
