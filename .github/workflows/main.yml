@@ -210,7 +210,7 @@ jobs:
           appId: ${{secrets.FIREBASE_IOS_APP_ID}}
           token: ${{secrets.FIREBASE_TOKEN}}
           groups: tester
-          file: ${{steps.download.outputs.download-path}}/${{ github.workspace }}/*.ipa
+          file: ${{steps.download.outputs.download-path}}/firebase.ipa
           debug: true
       - name: Cleanup
         if: always()
