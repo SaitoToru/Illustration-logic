@@ -8,13 +8,13 @@ platform :ios do
     cocoapods(podfile: "#{ENV['IOS_BUILD_PATH']}/iOS/Podfile")
     disable_automatic_code_signing(path: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj")
     certificates
-    update_project_provisioning(
-      xcodeproj: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
-      target_filter: "Unity-iPhone",
-      profile: "/Users/runner/Library/MobileDevice/Provisioning Profiles//a0f58796-ba31-410b-a15d-1f93ebbc5aa8.mobileprovision", # より動的にみるようにしています
-      # code_signing_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})"
-      code_signing_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})"
-    )
+    # update_project_provisioning(
+    #   xcodeproj: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcodeproj",
+    #   target_filter: "Unity-iPhone",
+    #   profile: "/Users/runner/Library/MobileDevice/Provisioning Profiles//a0f58796-ba31-410b-a15d-1f93ebbc5aa8.mobileprovision", # より動的にみるようにしています
+    #   # code_signing_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})"
+    #   code_signing_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})"
+    # )
     gym(
 	    configuration: "Debug",
       workspace: "#{ENV['IOS_BUILD_PATH']}/iOS/Unity-iPhone.xcworkspace",
