@@ -149,15 +149,15 @@ jobs:
         with:
           name: cgs-iOS
           path: build/iOS
-      - name: Cache restore cocoapods # firebase使ってるとcocoapodsを使うのですが、cocoapodsのキャッシュとらないと毎回時間かかるのでキャッシュしておきます。
-        uses: actions/cache@v2
-        if: ${{ always() }}
-        with:
-          path: |
-            build/iOS/iOS/Pods
-            ~/.cocoapods/repos
-          key: Pods-${{ hashFiles('**/Podfile') }}
-          restore-keys: Pods-
+      # - name: Cache restore cocoapods # firebase使ってるとcocoapodsを使うのですが、cocoapodsのキャッシュとらないと毎回時間かかるのでキャッシュしておきます。
+      #   uses: actions/cache@v2
+      #   if: ${{ always() }}
+      #   with:
+      #     path: |
+      #       build/iOS/iOS/Pods
+      #       ~/.cocoapods/repos
+      #     key: Pods-${{ hashFiles('**/Podfile') }}
+      #     restore-keys: Pods-
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: 2.7
