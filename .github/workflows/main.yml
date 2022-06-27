@@ -183,9 +183,12 @@ jobs:
   deploy:
     name: deploy ios app
     needs: [buildIOS]
-    matrix:
-      targetPlatform:
-        - iOS
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform:
+          # - Android
+          - iOS
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
