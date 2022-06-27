@@ -217,7 +217,6 @@ jobs:
         if: always()
         uses: geekyeggo/delete-artifact@v1
         with:
-          name: cgs-${{ matrix.targetPlatform }}
-        uses: geekyeggo/delete-artifact@v1
-        with:
-          name: ipa
+          name: |
+            cgs-${{ matrix.targetPlatform }}
+            ipa
