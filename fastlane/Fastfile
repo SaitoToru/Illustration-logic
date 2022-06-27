@@ -24,7 +24,7 @@ platform :ios do
       skip_profile_detection: true,
       codesigning_identity: "Apple Distribution: #{ENV['APPLE_TEAM_NAME']} (#{ENV['APPLE_TEAM_ID']})",
       # codesigning_identity: "Apple Development",
-      export_method: "adhoc",
+      export_method: "ad-hoc",
       export_options: {
         # compileBitcode: false,
         method: "ad-hoc",
