@@ -1,4 +1,4 @@
-git_url("git@github.com:SaitoToru/adhoc.git")
+git_url("https://github.com/SaitoToru/certificates.git")
 git_basic_authorization(Base64.strict_encode64("#{ENV['MATCH_REPOSITORY_ACCOUNT']}:#{ENV['MATCH_PERSONAL_ACCESS_TOKEN']}"))
 storage_mode("git")
 
